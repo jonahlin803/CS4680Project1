@@ -14,7 +14,7 @@ Fitness Goal: {goal}
 Current Fitness Level: {level}
 Training Frequency: {days} days per week
 Available Equipment: {equipment}
-Session Duration: {duration} minutes per session
+Session Duration: {duration}    minutes per session
 Special Requests/Preferences: {specifications}
 Physical Limitations or Injuries: {limitations}
 Program Duration: {program_duration} weeks
@@ -44,6 +44,8 @@ NUTRITION GUIDELINES BY GOAL:
 Ensure the program is safe, realistic, and adaptable for the client's goal and level.
 
 Include progressive overload over the course of the program (increase reps, sets, or difficulty gradually).
+
+CRITICAL: Generate a complete plan for ALL {program_duration} weeks. Each week should be included in the "weekly_plan" array with progressive difficulty increases.
 
 Structure the plan by weeks and days, including rest and active recovery days.
 
@@ -127,4 +129,6 @@ Required JSON Output Structure:
 }
 
 Final Instruction to the Model:
-Generate only the JSON output described above. Do not include any explanatory text, markdown formatting, or headings before or after the JSON. Ensure all values are filled with realistic, context-appropriate content based on the client’s profile.
+Generate only the JSON output described above. Do not include any explanatory text, markdown formatting, or headings before or after the JSON. Ensure all values are filled with realistic, context-appropriate content based on the client's profile.
+
+IMPORTANT: The "weekly_plan" array MUST contain {program_duration} week objects (e.g., if program_duration is 8, include weeks 1-8). Each week should show progression from the previous week.
