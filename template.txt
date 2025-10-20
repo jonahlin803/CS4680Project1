@@ -43,11 +43,9 @@ NUTRITION GUIDELINES BY GOAL:
 
 Ensure the program is safe, realistic, and adaptable for the client's goal and level.
 
-Include progressive overload over the course of the program (increase reps, sets, or difficulty gradually).
+IMPORTANT: Generate ONE weekly template plan that will be repeated for the entire {program_duration}-week program. The client will follow this same weekly schedule throughout the program duration.
 
-CRITICAL: Generate a complete plan for ALL {program_duration} weeks. Each week should be included in the "weekly_plan" array with progressive difficulty increases.
-
-Structure the plan by weeks and days, including rest and active recovery days.
+Structure the plan with the training days for one week, including rest and active recovery days.
 
 For each workout day, include:
 - Workout focus/type
@@ -72,15 +70,13 @@ Required JSON Output Structure:
 "program_duration_weeks": number
 },
 "program_summary": {
-"overview": "string",
+"overview": "string (mention that this weekly plan should be repeated for {program_duration} weeks)",
 "rationale": "string",
 "training_split": "string",
-"progression_strategy": "string"
+"progression_strategy": "string (explain how to progress week-to-week: add reps, reduce rest, etc.)"
 },
-"weekly_plan": [
-{
-"week_number": number,
-"focus": "string",
+"weekly_template": {
+"repeat_instructions": "Follow this weekly schedule for all {program_duration} weeks of the program",
 "days": [
 {
 "day_number": number,
@@ -100,8 +96,7 @@ Required JSON Output Structure:
 "estimated_calories_burned": number
 }
 ]
-}
-],
+},
 "nutrition_guidelines": {
 "daily_caloric_target": number,
 "macronutrient_split": {
@@ -131,4 +126,4 @@ Required JSON Output Structure:
 Final Instruction to the Model:
 Generate only the JSON output described above. Do not include any explanatory text, markdown formatting, or headings before or after the JSON. Ensure all values are filled with realistic, context-appropriate content based on the client's profile.
 
-IMPORTANT: The "weekly_plan" array MUST contain {program_duration} week objects (e.g., if program_duration is 8, include weeks 1-8). Each week should show progression from the previous week.
+IMPORTANT: Create ONE "weekly_template" with the workout schedule for a single week. This same weekly schedule will be repeated by the client for all {program_duration} weeks. In the "progression_strategy" field, explain how the client should progress over the weeks (e.g., "Add 2 reps each week" or "Reduce rest time by 5 seconds every 2 weeks").
