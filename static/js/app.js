@@ -107,17 +107,17 @@ function displayResults(data) {
     const weeklyPlan = document.getElementById('weeklyPlan');
     let weeksHTML = '';
 
-    data.weekly_plan.forEach(week => {
-        weeksHTML += `
-            <div class="week-container">
-                <div class="week-header">
-                    <h3>Week ${week.week_number}</h3>
-                    <p>${week.focus}</p>
-                </div>
-                <div class="days-grid">
-        `;
+    const template = data.weekly_template;
+    weeksHTML += `
+        <div class="week-container">
+            <div class="week-header">
+                <h3>Weekly Training Schedule</h3>
+                <p style="color: #10B981; font-weight: 500;">📋 ${template.repeat_instructions}</p>
+            </div>
+            <div class="days-grid">
+    `;
 
-        week.days.forEach(day => {
+    template.days.forEach(day => {
             weeksHTML += `
                 <div class="day-card">
                     <div class="day-header">
@@ -171,13 +171,12 @@ function displayResults(data) {
                     </div>
                 </div>
             `;
-        });
-
-        weeksHTML += `
-                </div>
-            </div>
-        `;
     });
+
+    weeksHTML += `
+            </div>
+        </div>
+    `;
 
     weeklyPlan.innerHTML = weeksHTML;
 
