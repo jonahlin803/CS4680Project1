@@ -73,11 +73,13 @@ pip install -r requirements.txt
 
 ### 4. Configure API Key
 
-Open `fitness_api.py` and replace the placeholder on **line 9** with your actual OpenAI API key:
+**For the main web app**, open `fitness_api.py` and replace the placeholder on **line 9** with your actual OpenAI API key:
 
 ```python
 client = OpenAI(api_key="YOUR_ACTUAL_API_KEY_HERE")
 ```
+
+**For the standalone test script**, if you want to use `planner.py`, also replace the API key on **line 6** of `planner.py`.
 
 ### 5. Run the Application
 
@@ -107,8 +109,8 @@ The app will be available at: **http://localhost:5000**
 
 You can test the API generation logic separately using `planner.py`:
 
-1. Add your API key to `planner.py` on line 6
-2. Modify the parameters in the script as needed
+1. **Add your API key** to `planner.py` on **line 6** (same as step 4 above)
+2. Modify the parameters in the script as needed (lines 8-14)
 3. Run:
    ```bash
    python planner.py
