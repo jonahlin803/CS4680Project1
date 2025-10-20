@@ -112,7 +112,7 @@ function displayResults(data) {
         <div class="week-container">
             <div class="week-header">
                 <h3>Weekly Training Schedule</h3>
-                <p style="color: #10B981; font-weight: 500;">📋 ${template.repeat_instructions}</p>
+                <p style="color: #FFFFFF; font-weight: 500;">📋 ${template.repeat_instructions}</p>
             </div>
             <div class="days-grid">
     `;
