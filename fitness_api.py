@@ -25,6 +25,7 @@ def generate():
         "days": 3,
         "equipment": "No equipment",
         "duration": 45,
+        "specifications": "Focus on squats, avoid burpees",
         "limitations": "None",
         "program_duration": 8
     }
@@ -40,6 +41,7 @@ def generate():
         days = data.get('days', 3)
         equipment = data.get('equipment', 'No equipment')
         duration = data.get('duration', 45)
+        specifications = data.get('specifications', 'None')
         limitations = data.get('limitations', 'None')
         program_duration = data.get('program_duration', 8)
         
@@ -54,6 +56,7 @@ def generate():
         prompt = prompt.replace('{days}', str(days))
         prompt = prompt.replace('{equipment}', equipment)
         prompt = prompt.replace('{duration}', str(duration))
+        prompt = prompt.replace('{specifications}', specifications)
         prompt = prompt.replace('{limitations}', limitations)
         prompt = prompt.replace('{program_duration}', str(program_duration))
         
