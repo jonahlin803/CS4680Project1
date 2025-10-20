@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fitness Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>💪 AI Fitness Planner</h1>
+            <p>Your personalized workout program powered by AI</p>
+        </div>
+
+        <!-- Input Form -->
+        <div class="card" id="formCard">
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h2>Create Your Personalized Plan</h2>
+            </div>
+
+            <form id="fitnessForm">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label>🎯 Fitness Goal</label>
+                        <select id="goal" required>
+                            <option value="Weight Loss">Weight Loss</option>
+                            <option value="Muscle Building">Muscle Building</option>
+                            <option value="General Fitness">General Fitness</option>
+                            <option value="Endurance">Endurance</option>
+                            <option value="Strength">Strength</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>💪 Experience Level</label>
+                        <select id="level" required>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>📅 Days Per Week</label>
+                        <select id="days" required>
+                            <option value="3">3 days per week</option>
+                            <option value="4">4 days per week</option>
+                            <option value="5">5 days per week</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>🏋️ Equipment Available</label>
+                        <select id="equipment" required>
+                            <option value="No equipment">Bodyweight only</option>
+                            <option value="Basic (dumbbells, bands)">Dumbbells & resistance bands</option>
+                            <option value="Full gym">Full Gym</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>⏱️ Session Duration</label>
+                        <select id="duration" required>
+                            <option value="30">30 minutes per session</option>
+                            <option value="45">45 minutes per session</option>
+                            <option value="60">60 minutes per session</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>📆 Program Duration</label>
+                        <select id="program_duration" required>
+                            <option value="4">4 weeks</option>
+                            <option value="8">8 weeks</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>📝 Special Requests / Preferences</label>
+                    <input type="text" id="specifications" placeholder="e.g., dumbbells only (no bands), focus on squats, avoid burpees, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label>⚠️ Physical Limitations</label>
+                    <input type="text" id="limitations" placeholder="e.g., knee pain, back issues, or None">
+                </div>
+
+                <button type="submit" class="btn-primary">✨ Generate My Fitness Plan</button>
+            </form>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="card">
+                <div class="spinner"></div>
+                <h3 style="color: #667eea; margin-bottom: 0.5rem;">Creating Your Plan</h3>
+                <p style="color: #6B7280;">AI is designing your personalized fitness program...</p>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results">
+            <!-- Client Profile -->
+            <div class="profile-card">
+                <h2 style="margin-bottom: 1rem;">👤 Your Profile</h2>
+                <div class="profile-grid" id="profileGrid"></div>
+            </div>
+
+            <!-- Program Summary -->
+            <div class="card">
+                <div class="section-header">
+                    <span class="section-icon">📋</span>
+                    <h2>Program Summary</h2>
+                </div>
+                <div class="summary-grid" id="summaryGrid"></div>
+            </div>
+
+            <!-- Weekly Plan -->
+            <div class="card">
+                <div class="section-header">
+                    <span class="section-icon">📅</span>
+                    <h2>Your Workout Plan</h2>
+                </div>
+                <div id="weeklyPlan"></div>
+            </div>
+
+            <!-- Nutrition -->
+            <div class="nutrition-card" id="nutritionCard">
+                <h2 style="margin-bottom: 1rem;">🥗 Nutrition Guidelines</h2>
+                <div id="nutritionContent"></div>
+            </div>
+
+            <!-- Habits -->
+            <div class="card">
+                <div class="section-header">
+                    <span class="section-icon">💡</span>
+                    <h2>Habit Recommendations</h2>
+                </div>
+                <div class="tips-grid" id="habitsGrid"></div>
+            </div>
+
+            <!-- Tracking -->
+            <div class="tracking-section">
+                <h3 style="color: #1E40AF; margin-bottom: 1rem; font-size: 1.5rem;">📊 Tracking & Metrics</h3>
+                <div id="trackingContent"></div>
+            </div>
+
+            <!-- Safety -->
+            <div class="safety-card" id="safetyCard">
+                <h3>⚠️ Important Safety Information</h3>
+                <div id="safetyContent"></div>
+            </div>
+
+            <button class="btn-secondary" onclick="location.reload()">Create Another Plan</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
