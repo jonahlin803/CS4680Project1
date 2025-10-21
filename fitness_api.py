@@ -62,7 +62,7 @@ def generate():
         
         # Call OpenAI API
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-5",
             messages=[
                 {"role": "user", "content": prompt}
             ],
