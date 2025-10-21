@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Initialize OpenAI client
 # TODO: Replace with your actual OpenAI API key
 # Get your API key from: https://platform.openai.com/api-keys
-client = OpenAI(api_key="YOUR_OPENAI_API_KEY_HERE")
+client = OpenAI(api_key="your-api-key-here")
 
 @app.route('/')
 def home():
@@ -61,8 +61,9 @@ def generate():
         prompt = prompt.replace('{program_duration}', str(program_duration))
         
         # Call OpenAI API
+        # Try GPT-4 format first (more reliable)
         response = client.chat.completions.create(
-            model="gpt-5",
+            model="gpt-4o",  # Using GPT-4 Optimized (most current stable model)
             messages=[
                 {"role": "user", "content": prompt}
             ],
@@ -72,8 +73,11 @@ def generate():
         # Get and parse result
         result = response.choices[0].message.content
         
+        print(f"\n{'='*50}")
         print(f"API Response received: {len(result)} characters")
-        print(f"First 100 chars: {result[:100]}")
+        print(f"First 200 chars: {result[:200]}")
+        print(f"Last 200 chars: {result[-200:]}")
+        print(f"{'='*50}\n")
         
         # Strip markdown code blocks if present
         if "```json" in result:
@@ -83,12 +87,21 @@ def generate():
             print("Stripping ``` markdown")
             result = result.split("```")[1].split("```")[0].strip()
         
-        print(f"After stripping, first 100 chars: {result[:100]}")
+        # Remove any leading/trailing whitespace and non-JSON text
+        result = result.strip()
+        
+        # Find the first '{' and last '}' to extract just the JSON
+        start_idx = result.find('{')
+        end_idx = result.rfind('}')
+        
+        if start_idx != -1 and end_idx != -1:
+            result = result[start_idx:end_idx+1]
+            print(f"Extracted JSON: first 200 chars: {result[:200]}")
         
         # Parse and validate JSON before returning
         import json
         parsed_result = json.loads(result)
-        print("JSON parsed successfully!")
+        print("✓ JSON parsed successfully!")
         return jsonify(parsed_result), 200
         
     except json.JSONDecodeError as e:
