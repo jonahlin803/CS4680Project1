@@ -1,6 +1,6 @@
 # AI Fitness Planner
 
-**CS4680 Project 1** - A personalized fitness plan generator powered by OpenAI's GPT-4o API.
+**CS4680 Project 1** - A personalized fitness plan generator powered by OpenAI's GPT-5 API.
 
 ## 🎯 Project Overview
 
@@ -29,7 +29,7 @@ This web application uses AI to create customized workout plans based on user pr
 
 - **Backend**: Python Flask
 - **Frontend**: HTML, CSS, JavaScript
-- **AI Model**: OpenAI GPT-4o
+- **AI Model**: OpenAI GPT-5
 - **Prompt Engineering Techniques**:
   - Persona Pattern: Certified personal trainer persona
   - Few-Shot Learning: Example workout plans
@@ -185,7 +185,7 @@ Jonah Lin - CS4680 Student
 
 ## 🙏 Acknowledgments
 
-- OpenAI for the GPT-4o API
+- OpenAI for the GPT-5 API
 - CS4680 Course Staff
 - Flask and Python community
 
