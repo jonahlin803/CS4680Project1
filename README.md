@@ -32,9 +32,9 @@ This web application uses AI to create customized workout plans based on user pr
 - **AI Model**: OpenAI GPT-5
 - **Prompt Engineering Techniques**:
   - Persona Pattern: Certified personal trainer persona
-  - Few-Shot Learning: Example workout plans
-  - Chain of Thought: Structured plan creation process
   - Template-based prompting with variable substitution
+  - Few-Shot Learning: Example workout plans
+  - Rule-based constraints for safety and realism
 
 ## 📋 Prerequisites
 
@@ -76,7 +76,7 @@ pip install -r requirements.txt
 **For the main web app**, open `fitness_api.py` and replace the placeholder on **line 9** with your actual OpenAI API key:
 
 ```python
-client = OpenAI(api_key="YOUR_OPENAI_API_KEY_HERE")
+client = OpenAI(api_key="your-api-key-here")
 ```
 
 **For the standalone test script**, if you want to use `planner.py`, also replace the API key on **line 6** of `planner.py`.
@@ -149,21 +149,13 @@ CS4680Project1/
 ### 1. Persona Pattern
 Establishes the AI as a certified personal trainer with 10+ years of experience, ensuring professional and knowledgeable responses.
 
-### 2. Few-Shot Learning
-Provides example workout plans to guide the AI's output format and style.
-
-### 3. Chain of Thought
-Breaks down the plan creation process into logical steps:
-- Analyze fitness goals and current level
-- Consider available time and equipment
-- Design progressive workouts
-- Include rest and recovery
-- Provide form tips and safety notes
-
-### 4. Template-Based Prompting
+### 2. Template-Based Prompting
 Uses `template.txt` with variable substitution for consistent, structured outputs.
 
-### 5. Critical Realism Rules
+### 3. Few-Shot Learning
+Provides example workout plans to guide the AI's output format and style.
+
+### 4. Rule-Based Constraints
 Ensures AI-generated plans are safe, achievable, and realistic based on user's fitness level and available resources.
 
 ## ⚠️ Known Issues
